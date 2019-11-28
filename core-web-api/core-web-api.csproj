@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>core_web_api</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyApi.Data\MyApi.Data.csproj" />
+    <ProjectReference Include="..\MyApi.Services\MyApi.Services.csproj" />
+  </ItemGroup>
+
+</Project>
