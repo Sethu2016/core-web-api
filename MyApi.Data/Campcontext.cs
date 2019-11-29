@@ -27,20 +27,20 @@ namespace MyApi.Data
 
     }
     
-    public class GenericContext : DbContext
-    {
-        public GenericContext() : base()
-        {
+    //public class GenericContext : DbContext
+    //{
+    //    public GenericContext() : base()
+    //    {
             
-        }
+    //    }
 
-        public override int SaveChanges()
-        {
-            try
-            {
-                return base.SaveChanges();
-            }
-            catch(Exception e) { throw; }
-        }
-    }
+    //    public override int SaveChanges()
+    //    {
+    //        try
+    //        {
+    //            return base.SaveChanges();
+    //        }
+    //        catch(Exception e) { throw; }
+    //    }
+    //}
 }

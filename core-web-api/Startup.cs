@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MyApi.Data;
+using MyApi.Services;
+using MyApi.Services.Camp.Interfaces;
 
 namespace core_web_api
 {
@@ -28,12 +31,15 @@ namespace core_web_api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Campcontext>(GetConnection());
+            services.AddScoped<ICampService, CampService>();
+
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
         }
 
         private Action<DbContextOptionsBuilder> GetConnection()
         {
-            return o => o.UseSqlite(Configuration.GetConnectionString("MyConnection"));
+            return o => o.UseSqlite(Configuration.GetConnectionString("MyConnection"), x => x.MigrationsAssembly("MyApi.Data"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
